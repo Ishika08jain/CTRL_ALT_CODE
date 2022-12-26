@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="20dp"
+    android:layout_height="60dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            app:cardCornerRadius="20dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/item_img_container"
+            android:layout_marginStart="10dp"
+
+            android:layout_width="40dp"
+            android:layout_height="40dp">
+
+            <ImageView
+                android:id="@+id/item_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/music_icon">
+
+            </ImageView>
+        </androidx.cardview.widget.CardView>
+        
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@+id/item_img_container"
+            android:layout_margin="10dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="Vibe Player"></TextView>
+
+        <TextView
+            android:id="@+id/item_duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/item_img_container"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Vibe Player"
+            android:textColor="#B2B2B2"
+            android:textSize="10sp"
+            android:textStyle="bold"></TextView>
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
