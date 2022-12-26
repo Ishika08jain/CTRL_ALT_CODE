@@ -19,7 +19,8 @@
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/toolbar"/>
+                android:id="@+id/toolbar"
+                />
 
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -34,6 +35,7 @@
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/main_menu"
         android:fitsSystemWindows="true"
+        android:id="@+id/nav"
         app:itemTextColor="@color/black"
         app:itemIconTint="@color/black"
         android:layout_gravity="start"/>

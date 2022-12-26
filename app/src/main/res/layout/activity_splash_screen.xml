@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,18 +7,42 @@
     tools:context=".SplashScreen"
     android:background="@drawable/background_color">
 
-  <VideoView
-      android:id="@+id/videoView"
-      android:layout_width="248dp"
-      android:layout_height="216dp"
-      android:layout_marginStart="16dp"
-      android:layout_marginTop="272dp"
-      android:layout_marginEnd="16dp"
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="100dp"
+      android:layout_height="100dp"
+      app:cardCornerRadius="50dp"
+      android:layout_marginTop="200dp"
+      android:id="@+id/logocont"
+    android:layout_centerHorizontal="true">
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+      android:src="@drawable/logofinal"/>
 
 
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.595"
+  </androidx.cardview.widget.CardView>
 
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+  <ProgressBar
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="10dp"
+    android:layout_below="@id/logocont"
+    android:layout_centerHorizontal="true"/>
+  
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:gravity="center"
+      android:text="WELCOME TO VIBE MUSIC PLAYER"
+      android:layout_marginBottom="10dp"
+      android:textSize="20sp"
+      android:textStyle="bold"
+      android:textColor="@color/black"
+
+  />
+
+
+</RelativeLayout>
