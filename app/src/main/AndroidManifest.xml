@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-sdk android:maxSdkVersion="32"
+        android:minSdkVersion="23"
+        tools:ignore="GradleOverrides">
+
+    </uses-sdk>
 
     <application
         android:allowBackup="true"
