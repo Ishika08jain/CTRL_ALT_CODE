@@ -2,12 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-sdk android:maxSdkVersion="32"
+    <uses-sdk
+        android:maxSdkVersion="32"
         android:minSdkVersion="23"
-        tools:ignore="GradleOverrides">
+        tools:ignore="GradleOverrides"></uses-sdk>
 
-    </uses-sdk>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +21,14 @@
         android:theme="@style/Theme.Vibe"
         tools:targetApi="31">
         <activity
+            android:name=".login"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+
             android:name=".PartyplaylistActivity"
             android:exported="false">
             <meta-data
@@ -42,6 +51,13 @@
         </activity>
         <activity
             android:name=".JourneyplaylistActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activity.PLayerActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

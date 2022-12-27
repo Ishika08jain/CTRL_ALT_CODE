@@ -1,14 +1,19 @@
 package com.example.vibe;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -21,12 +26,16 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.WindowManager;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.example.vibe.helper.helper;
 
 public class SplashScreen extends MainActivity {
     boolean isRunning= true;
+    ActivityResultLauncher<String> storagePermissionLauncher;
+    final String permission = Manifest.permission.READ_EXTERNAL_STORAGE;
+
 
 
 
@@ -34,14 +43,58 @@ public class SplashScreen extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        storagePermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), granted -> {
+            if (granted) {
+                loadmusic();
+
+            } else {
+                userResponses();
+            }
+
+        });
+        storagePermissionLauncher.launch(permission);
 
 
+    }
 
-        if(isPermission()){
+    private void userResponses() {
+        if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED) {
             loadmusic();
-        }else{
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 12);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (shouldShowRequestPermissionRationale(permission)) {
+                new AlertDialog.Builder(this).setTitle("Requesting Permission").setMessage("Allow us to fetch songs on your device")
+                        .setPositiveButton("allow", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int i) {
+                                storagePermissionLauncher.launch(permission);
+
+                            }
+                        })
+                        .setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getApplicationContext(), "PERMISSION DENIED", Toast.LENGTH_SHORT).show();
+                                dialog.dismiss();
+
+
+                            }
+                        }).show();
+            }
+
+        } else {
+            Toast.makeText(this, "YOU DENIED THE PERMISSION", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+
+
+
+//        if(isPermission()){
+//            loadmusic();
+//        }else{
+//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 12);
+//        }
 
 
 
@@ -58,7 +111,7 @@ public class SplashScreen extends MainActivity {
 //
 //
 //        }
-    }
+
 
 
 
